@@ -16,7 +16,7 @@ Por último, no display, um quadrado movimenta-se de acordo com as coordenadas d
 #include "pico/stdlib.h" //Biblioteca fundamental do SDK
 #include "hardware/pwm.h" //Biblioteca para manipular o pwm
 #include "hardware/adc.h" //Biblioteca para as configurações do adc
-
+#include "math.h"
 //Configurações para o displey
 #include "hardware/i2c.h" //Biblioteca para comunicação i2c
 #include "ssd1306.h"
@@ -134,7 +134,7 @@ int main()
     while (true) {
       //Selecionando o canal e lendo o valor correpondente
       adc_select_input(1);
-      valor_atualX = adc_read();
+      valor_atualX = abs(adc_read() - 4095);
       adc_select_input(0);
       valor_atualY = adc_read();
 
