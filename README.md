@@ -56,13 +56,10 @@ O eixo X ficou sendo lido pelo canal 1 e o eixo Y pelo canal 0. <br>
 
 ```bash
 adc_select_input(1);
-valor_atualX = abs(adc_read() - 4095);
+valor_atualX = abs(adc_read() - 4096);
 adc_select_input(0);
 valor_atualY = adc_read();
 ```
-
-3. Relação para posicionar o quadrado corretamente <br>
-A seguinte relação para o eixo x foi usada para que a posição do quadrado no display fosse extamente igual a do joystick: 
 
 
 ### 3. Funcionalidades do botões
