@@ -54,15 +54,16 @@ Ademais, o Joystick também tem a função de mover um quadrado 8x8 pelo display
 2. Foi necessário inverter os canais no adc_select() <br>
 O eixo X ficou sendo lido pelo canal 1 e o eixo Y pelo canal 0. <br>
 
-3. Relação para posicionar o quadrado corretamente <br>
-A seguinte relação foi usada para que a posição do quadrado no display fosse extamente igual a do joystick.
-
 ```bash
 adc_select_input(1);
 valor_atualX = abs(adc_read() - 4095);
 adc_select_input(0);
 valor_atualY = adc_read();
 ```
+
+3. Relação para posicionar o quadrado corretamente <br>
+A seguinte relação para o eixo x foi usada para que a posição do quadrado no display fosse extamente igual a do joystick: 
+
 
 ### 3. Funcionalidades do botões
 
