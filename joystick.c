@@ -1,4 +1,4 @@
-//Código desenvolcido por Andressa Sousa Fonseca
+//Código desenvolvido por Andressa Sousa Fonseca
 
 /*
 O presente código permite que a intensidade dos leds sejam controladas pela posição dos eixos do joystick,
@@ -134,7 +134,7 @@ int main()
     while (true) {
       //Selecionando o canal e lendo o valor correpondente
       adc_select_input(1);
-      valor_atualX = abs(adc_read() - 4095);
+      valor_atualX = abs(adc_read() - 4096);
       adc_select_input(0);
       valor_atualY = adc_read();
 
