@@ -25,7 +25,7 @@ __As funcionalidade básicas especificadas para a atividade são:__
 6) O botão A terá a seguinte funcionalidade: Ativar ou desativar os LED PWM a cada acionamento.
 
 
-__Uma breve explicação do desenvolvimento e resultados obtidos podem ser vistos no vídeo endereçado no seguine link: [Aplicação de Conversores A/D]().__
+__Uma breve explicação do desenvolvimento e resultados obtidos podem ser vistos no vídeo endereçado no seguine link: [Aplicação de Conversores A/D](https://youtu.be/GN4ztbMzv6M?si=sReb9UBP103bOldQ).__
 
 ## Detalhamento Do Projeto
 
