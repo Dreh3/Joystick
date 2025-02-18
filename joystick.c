@@ -187,10 +187,10 @@ int main()
         }else {
             levelY = 0; // Apaga quando estiver em 2048
         };
-        printf("Intensidade X: %d; VX: %d\n", levelX, valor_atualX);
-        pwm_set_gpio_level(ledB, levelX); //Atualiza o level
         printf("Intensidade Y: %d; VY: %d\n", levelY, valor_atualY);
-        pwm_set_gpio_level(ledR, levelY); //Atualiza o level        
+        pwm_set_gpio_level(ledB, levelY); //Atualiza o level
+        printf("Intensidade X: %d; VX: %d\n", levelX, valor_atualX);
+        pwm_set_gpio_level(ledR, levelX); //Atualiza o level        
       };
 
       sleep_ms(10); //Pausa para atualizar e suavizar as mudanças
