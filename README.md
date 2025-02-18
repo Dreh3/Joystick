@@ -10,10 +10,19 @@ Andressa Sousa Fonseca
 __Aplicação de Comunicação serial I2C, Display 128x64,Leds RGB, PWM e Conversores A/D__  <br>
 
 __Os Componentes necessários para a execução da atividade são:__
-1) 
+1) LED RGB, com os pinos conectados às GPIOs (11, 12 e 13).
+2) Botão do Joystick conectado à GPIO 22.
+3) Joystick conectado aos GPIOs 26 e 27.
+4) Botão A conectado à GPIO 5.
+5) Display SSD1306 conectado via I2C (GPIO 14 e GPIO15).
 
 __As funcionalidade básicas especificadas para a atividade são:__
-1) 
+1)  O LED Azul terá seu brilho ajustado conforme o valor do eixo Y.
+2) O LED Vermelho seguirá o mesmo princípio, mas de acordo com o eixo X.
+3) Os LEDs serão controlados via PWM para permitir variação suave da intensidade luminosa.
+4) Exibir no display SSD1306 um quadrado de 8x8 pixels.
+5) O botão do joystick terá duas funcionalidades.
+6) O botão A terá a seguinte funcionalidade: Ativar ou desativar os LED PWM a cada acionamento.
 
 
 __Uma breve explicação do desenvolvimento e resultados obtidos podem ser vistos no vídeo endereçado no seguine link: [Aplicação de Conversores A/D]().__
@@ -22,7 +31,7 @@ __Uma breve explicação do desenvolvimento e resultados obtidos podem ser visto
 
 ### 1. Controle de intensidade dos Leds
 
-O projeto presente nesse repositório possui diversas funcionalidades. A primeira delas é controlar a intensidade dos Leds Vermelho e Azul de acordo com a posição dos eixos Y e X do Joystick, respectivamente. O controle de intensidade se dá por meio de PWM. Assim, os leds são configurados como saída PWM e os valores do eixos do Joystick são lidos por duas entradas, configuradas como entradas adc. 
+O projeto presente nesse repositório possui diversas funcionalidades. A primeira delas é controlar a intensidade dos Leds Vermelho e Azul de acordo com a posição dos eixos X e Y do Joystick, respectivamente. O controle de intensidade se dá por meio de PWM. Assim, os leds são configurados como saída PWM e os valores do eixos do Joystick são lidos por duas entradas, configuradas como entradas adc. <br>
 Detalhes a relação entre os eixos e intensidade dos leds:
 1. Quando os valor lido é igual a 2048, o led correspondente deve desligar.
 2. Nas extremidades, os valores lidos são 0 e 4096 que darão aos leds a maior intensidade.
@@ -35,7 +44,7 @@ Para permitir a conversão de valores do adc para os valores de intensidade dese
 </div>
 
 ### 2. Controle do quadrado no display
-Ademais, o Joystick também tem a função de mover um quadrado 8x8 pelo display 128x64. Algumas configurações foram necessárias para que funcionasse corretamente:
+Ademais, o Joystick também tem a função de mover um quadrado 8x8 pelo display 128x64. Algumas configurações foram necessárias para que funcionasse corretamente:<br>
 
 1. Relação entre o valores lidos nas portas analógicas e a posição no display
 <div align="center">
@@ -43,7 +52,7 @@ Ademais, o Joystick também tem a função de mover um quadrado 8x8 pelo display
 </div>
 
 2. Foi necessário inverter os canais no adc_select()
-O eixo X ficou sendo lido pelo canal 1 e o eixo Y pelo canal 0.
+O eixo X ficou sendo lido pelo canal 1 e o eixo Y pelo canal 0. <br>
 
 3. Relação para posicionar o quadrado corretamente
 A seguinte relação foi usada para que a posição do quadrado no display fosse extamente igual a do joystick.
@@ -56,6 +65,8 @@ valor_atualY = adc_read();
 ```
 
 ### 3. Funcionalidades do botões
+
+Os botões tem diferentes funções. O Botão A liga e desliga os Leds Vermelho e Azul. E o Botão do joystick alterna os estado do Led Verde e, também, perimite modificar as bordas exibidas no display. <br>
 A utilização de dois botões permitiu implementar um tratamento de debouncing via software aliado a rotinas de interupção, detalhadas em aulas anteriores. Foi utilizada a seguinte função de interrupção:
 ```bash
 static void interrupcao_Botao(uint gpio, uint32_t events);
